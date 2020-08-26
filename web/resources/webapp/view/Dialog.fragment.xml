@@ -1,0 +1,123 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified">
+	<Dialog width="100%" title="PipeLife Item Management">
+<!--		<l:ResponsiveSplitter width="100%" defaultPane="default">-->
+<!--<l:PaneContainer width="100%" >-->
+	
+<!--<l:SplitPane width="100%" id="default">		-->
+
+			<OverflowToolbar id="toolbxa"  active="true" design="Info" height="2rem" press="onToolbarPress" ariaHasPopup="dialog" ariaLabelledBy="myText">
+				<Text text="Beautiful Item Tree: "/>
+				<ToolbarSpacer/>
+				<core:Icon src="sap-icon://sap-ui5" width="2rem" />
+			</OverflowToolbar>			
+		
+				<Tree selectionChange="onTreeActions" id="Tree" items="{path: '/', parameters: {numberOfExpandedLevels: 1}  }" mode="MultiSelect">
+					<CustomTreeItem>
+						<FlexBox alignItems="Start" width="100%">
+							<items>
+								<Button icon="{ref}" press="handleButtonPress" class="sapUiSmallMarginEnd" />
+								<Input value="{text}">
+									<layoutData>
+										<FlexItemData growFactor="1" />
+									</layoutData>
+								</Input>
+							</items>
+						</FlexBox>
+					</CustomTreeItem>
+				</Tree>
+				
+<!--</l:SplitPane>-->
+
+<!--<l:SplitPane width="100%">-->
+	
+			<OverflowToolbar id="toolbxax"  active="true" design="Info" height="2rem" press="onToolbarPress" ariaHasPopup="dialog" ariaLabelledBy="myText">
+				<Text text="Beautiful Item Table: "/>
+				<ToolbarSpacer/>
+				<core:Icon src="sap-icon://sap-ui5" width="2rem" />
+			</OverflowToolbar>			
+
+			<Table id="idProductsTable"
+			    growing="true"
+			    growingThreshold="6"
+						items="{
+			path: 'userModel&gt;/PLITEMS',
+        	parameters : {
+            	$count : true
+			        }
+		}">
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title text="PipeLife Items" level="H2"/>
+						<ToolbarSpacer/>
+						<Button
+							tooltip="Sort"
+							icon="sap-icon://sort"
+							press="handleSortButtonPressed" />
+						<Button
+							tooltip="Filter"
+							icon="sap-icon://filter"
+							press="handleFilterButtonPressed" />
+						<ToggleButton icon="sap-icon://menu" tooltip="Enable Custom Context Menu" press="onToggleContextMenu" />
+					</OverflowToolbar>
+				</headerToolbar>
+				<infoToolbar>
+					<OverflowToolbar id="vsdFilterBar" visible="false">
+						<Text id="vsdFilterLabel" />
+					</OverflowToolbar>
+				</infoToolbar>
+				<columns>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Nominal diameter" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Outer diameter" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Inner diameter" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Rib's height" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Rib's length" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Weight" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Pipe's length" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Socket length" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Inner socket diameter" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Product code" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Category" /></Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Input value="{path: 'userModel&gt;NOM_DIAM_DN'}" />
+							<Input value="{path: 'userModel&gt;OUT_DIAM_DOUT'}" />
+							<Input value="{path: 'userModel&gt;INN_DIAM_DIN'}" />
+							<Input value="{path: 'userModel&gt;R_HEIGTH_H'}" />
+							<Input value="{path: 'userModel&gt;R_LENGTH_L'}" />
+							<Input value="{path: 'userModel&gt;WEIGHT'}" />
+							<Input value="{path: 'userModel&gt;PIPE_LENGTH'}" />
+							<Input value="{path: 'userModel&gt;SOCKET_LENGTH'}" />
+							<Input value="{path: 'userModel&gt;INN_SOCKET_DIAM'}" />
+							<Input value="{path: 'userModel&gt;PROD_CODE'}" />
+							<Input value="{path: 'userModel&gt;CATEGORY'}" />
+							
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			
+<!--			</l:SplitPane>		-->
+<!--		</l:PaneContainer>			-->
+<!--</l:ResponsiveSplitter>	-->
+	
+			<Bar>
+				<contentRight>
+					<Button 
+					icon="sap-icon://save"
+					press="closeDialog"/>
+					<Button 
+					icon="sap-icon://undo"
+					press="closeDialog"/>
+				</contentRight>
+			</Bar>
+	
+	</Dialog>
+</core:FragmentDefinition>

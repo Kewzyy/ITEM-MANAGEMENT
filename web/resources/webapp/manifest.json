@@ -1,0 +1,78 @@
+{
+	"sap.app": {
+		"id": "sap.m.sample.WizardBranching",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"userService": {
+				"uri": "/tax/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "4.0"
+				}
+			}
+		}
+		
+	}, 
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "sap.m.sample.WizardBranching.view.WizardBranching",
+			"type": "XML",
+			"async": true
+		},
+		
+		
+		"models": {
+			"userModel": {
+				"dataSource": "userService",
+				"type": "sap.ui.model.odata.v4.ODataModel",
+				"preload": false,
+				"settings": {
+					"synchronizationMode": "None",
+					"operationMode": "Server",
+					"autoExpandSelect": true
+				}
+			},
+				 "uiModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/uiModel.json",
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },			
+			"config": {
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleUrl": "./i18n/i18n.properties"
+				}
+			}
+		},		
+		"dependencies": {
+			"libs": {
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"config": {
+			"sample": {
+				"stretch": true,
+				"files": [
+					"view/WizardBranching.view.xml",
+					"controller/WizardBranching.controller.js",
+					"view/ReviewPage.fragment.xml",
+					"view/FilterDialog.fragment.xml",
+					"view/SortDialog.fragment.xml",
+					"view/Dialog.fragment.xml",
+					"Tree.json",
+					"manifest.json"
+				]
+			}
+		}
+	}
+
+}

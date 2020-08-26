@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		confirm="handleSortDialogConfirm">
+		<sortItems>
+			<ViewSettingsItem text="Outer diameter" key="OUT_DIAM_DOUT" selected="true" />
+			<ViewSettingsItem text="Inner diameter" key="INN_DIAM_DIN" />
+			<ViewSettingsItem text="Rib's heigth" key="R_HEIGTH_H" />
+			<ViewSettingsItem text="Rib's length" key="R_LENGTH_L" />
+		</sortItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

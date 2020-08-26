@@ -1,0 +1,8 @@
+{
+  "PIPELIFE": {
+    "target": {
+      "object": "PIPELIFE_ITEMS",
+      "schema": "CDN"
+    }
+  }
+}

@@ -1,0 +1,174 @@
+<core:FragmentDefinition
+		xmlns:layout="sap.ui.layout"
+		xmlns:form="sap.ui.layout.form"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:u="sap.ui.unified"
+		xmlns:ui="sap.ui.table"
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core">
+	<Dialog title="PipeLife Item Management">
+		
+		<form:SimpleForm id="SimpleFormDisplay480_12120"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="4"
+			labelSpanL="4"
+			labelSpanM="4"
+			labelSpanS="4"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="2"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<form:content>
+				
+				<core:Title text="Main information" />
+				
+								<Label text="Nominal diameter"  />
+								<Input id="nomInX" liveChange="onChangeStates" valueState="Error" valueStateText="Input your value.." editable="{/nomdXsel}" value="{/nomDiamX}">
+										<layoutData>
+											<layout:GridData span="XL6 L6 M6 S6" />
+										</layoutData>
+								</Input>	
+								<CheckBox selected="{/nomdXsel}">
+										<layoutData>
+											<layout:GridData span="XL1 L1 M1 S1" />
+										</layoutData>
+								</CheckBox>
+								<Label text="Outer diameter" />
+								<Input id="outInX" liveChange="onChangeStates" valueState="Error" valueStateText="Input your value.." editable="{/outInXsel}" value="{/outerDiamX}" >
+										<layoutData>
+											<layout:GridData span="XL6 L6 M6 S6" />
+										</layoutData>									
+								</Input>	
+								<CheckBox selected="{/outInXsel}">
+										<layoutData>
+											<layout:GridData span="XL1 L1 M1 S1" />
+										</layoutData>
+								</CheckBox>	
+								<Label text="Inner diameter" />
+								<Input id="innInX" liveChange="onChangeStates" valueState="Error" valueStateText="Input your value.." editable="{/innerDiamXsel}" value="{/innerDiamX}" >
+										<layoutData>
+											<layout:GridData span="XL6 L6 M6 S6" />
+										</layoutData>									
+								</Input>	
+								<CheckBox selected="{/innerDiamXsel}">
+										<layoutData>
+											<layout:GridData span="XL1 L1 M1 S1" />
+										</layoutData>
+								</CheckBox>	
+								<Label text="Rib's height" />
+								<Input liveChange="onChangeStates" editable="{/ribHeightXsel}" valueState="Error" valueStateText="Input your value.." id="ribHX" value="{/ribHeightX}">
+										<layoutData>
+											<layout:GridData span="XL6 L6 M6 S6" />
+										</layoutData>									
+								</Input>	
+								<CheckBox selected="{/ribHeightXsel}">
+										<layoutData>
+											<layout:GridData span="XL1 L1 M1 S1" />
+										</layoutData>									
+								</CheckBox>	
+								<Label text="Rib's length" />
+								<Input liveChange="onChangeStates" editable="{/ribLengthXsel}" valueState="Error" valueStateText="Input your value.." id="ribLX" value="{/ribLengthX}" >
+										<layoutData>
+											<layout:GridData span="XL6 L6 M6 S6" />
+										</layoutData>									
+								</Input>	
+								<CheckBox selected="{/ribLengthXsel}">
+										<layoutData>
+											<layout:GridData span="XL1 L1 M1 S1" />
+										</layoutData>									
+								</CheckBox>	
+								<Label text="Weight" />
+								<Input liveChange="onChangeStates" editable="{/theWeightXsel}" valueState="Error" valueStateText="Input your value.." id="theWeightX" value="{/theWeightX}" >
+										<layoutData>
+											<layout:GridData span="XL6 L6 M6 S6" />
+										</layoutData>									
+								</Input>	
+								<CheckBox selected="{/theWeightXsel}">
+										<layoutData>
+											<layout:GridData span="XL1 L1 M1 S1" />
+										</layoutData>									
+								</CheckBox>	
+
+				<core:Title text="Additional information" />
+				
+								<Label text="Pipe's length" />
+								<Input liveChange="onChangeStates" editable="{/pipeLengthXsel}" valueState="Error" valueStateText="Input your value.." id="pipeLX"   value="{/pipeLengthX}" >
+										<layoutData>
+											<layout:GridData span="XL6 L6 M6 S6" />
+										</layoutData>									
+								</Input>	
+								<CheckBox selected="{/pipeLengthXsel}">
+										<layoutData>
+											<layout:GridData span="XL1 L1 M1 S1" />
+										</layoutData>									
+								</CheckBox>	
+								<Label text="Socket length" />
+								<Input liveChange="onChangeStates" valueState="Error" valueStateText="Input your value.." editable="{/socketLengthXsel}" id="socketLX"   value="{/socketLengthX}" >
+										<layoutData>
+											<layout:GridData span="XL6 L6 M6 S6" />
+										</layoutData>									
+								</Input>			
+								<CheckBox selected="{/socketLengthXsel}">
+										<layoutData>
+											<layout:GridData span="XL1 L1 M1 S1" />
+										</layoutData>									
+								</CheckBox>	
+								<Label text="Inner Socket Diameter" />
+								<Input liveChange="onChangeStates" editable="{/innSocketLXsel}" valueState="Error" valueStateText="Input your value.." id="innsocketDX"  value="{/innSocketLX}" >
+										<layoutData>
+											<layout:GridData span="XL6 L6 M6 S6" />
+										</layoutData>									
+								</Input>	
+								<CheckBox selected="{/innSocketLXsel}">
+										<layoutData>
+											<layout:GridData span="XL1 L1 M1 S1" />
+										</layoutData>									
+								</CheckBox>	
+								<Label text="Product code" />
+								<Input liveChange="onChangeStates" valueState="Error" valueStateText="Input your value.." editable="{/prodCodeXsel}" id="prodCX"  value="{/prodCodeX}" >
+										<layoutData>
+											<layout:GridData span="XL6 L6 M6 S6" />
+										</layoutData>									
+								</Input>			
+								<CheckBox selected="{/prodCodeXsel}">
+										<layoutData>
+											<layout:GridData span="XL1 L1 M1 S1" />
+										</layoutData>									
+								</CheckBox>	
+								<Label text="Category" />
+								<Input liveChange="onChangeStates" valueState="Error" valueStateText="Input your value.." editable="{/categoryInputXsel}" id="catInputX"  value="{/categoryInputX}">
+										<layoutData>
+											<layout:GridData span="XL6 L6 M6 S6" />
+										</layoutData>									
+								</Input>	
+								<CheckBox selected="{/categoryInputXsel}">
+										<layoutData>
+											<layout:GridData span="XL1 L1 M1 S1" />
+										</layoutData>									
+								</CheckBox>	
+
+			</form:content>
+		</form:SimpleForm>
+		
+			<Bar>
+				<contentRight>
+					<Button 
+					id="save"
+					icon="sap-icon://save"
+					enabled="false"
+					press="onSaveItem"/>
+					<Button 
+					id="close"
+					icon="sap-icon://undo"
+					press="onCloseDialog"/>
+				</contentRight>
+			</Bar>
+	
+	</Dialog>
+</core:FragmentDefinition>

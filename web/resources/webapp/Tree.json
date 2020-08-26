@@ -1,0 +1,52 @@
+ [
+	{
+		"text": "All Pipes",
+		"ref": "sap-icon://list",
+		"nodes":
+		[
+			{
+				"text": "Red",
+				"ref": "sap-icon://mirrored-task-circle-2",
+				"nodes":[
+					{
+						"text": "PRAGMA 160/6",
+						"ref": "sap-icon://mirrored-task-circle"
+					},
+						{
+							"text": "PRAGMA 200/6",
+							"ref": "sap-icon://mirrored-task-circle"
+						},					
+					{
+						"text": "PRAGMA 150/6",
+						"ref": "sap-icon://mirrored-task-circle"
+					}
+				]
+			}, 			{
+							"text": "Blue",
+							"ref": "sap-icon://mirrored-task-circle-2",
+							"nodes": [{
+									"text": "PRAGMA 200/7",
+									"ref": "sap-icon://mirrored-task-circle"			
+							}, {
+									"text": "PRAGMA 315/6",
+									"ref": "sap-icon://mirrored-task-circle"				
+							}
+							
+							]
+						},
+							{
+							"text": "Green",
+							"ref": "sap-icon://mirrored-task-circle-2",
+							"nodes": [{
+									"text": "PRAGMA 160/7",
+									"ref": "sap-icon://mirrored-task-circle"			
+							}
+							
+							]
+						}
+						
+		]
+	}
+	
+
+]

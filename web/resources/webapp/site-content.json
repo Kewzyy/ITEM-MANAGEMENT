@@ -1,0 +1,43 @@
+{
+  "roles": {
+   "Everyone": {
+     "_version": "1.0",
+     "identification": {
+            "id": "Everyone",
+            "namespace": "",
+            "entityType": "role"
+     },
+     "payload": {
+            "catalogs": [],
+            "groups": [{
+                              "id": "MyGroupId"
+             }]
+     }
+   }
+  },
+  "applications": {
+  },
+  "groups": {
+   " MyGroupId": {
+     "identification": {
+      "id": " MyGroupId",
+      "i18n": "i18n/i18n.properties",
+      "namespace": "",
+      "title": "{{ MyGroupId_GROUP_TITLE}}"
+     },
+     "payload": {
+      "tiles": [{
+        "id": "SampleTile",
+        "subTitle": "{{SampleTile_SUB_TITLE}}",
+        "appId": "sap.m.sample.WizardBranching",
+        "target": {
+         "semanticObject": "myApp",
+         "action": "show",
+         "parameters": []
+        }
+      }]
+     }
+   }
+  }
+	
+}

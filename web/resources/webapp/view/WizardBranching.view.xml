@@ -1,0 +1,479 @@
+<mvc:View
+		height="100%"
+		controllerName="sap.m.sample.WizardBranching.controller.WizardBranching"
+		xmlns:layout="sap.ui.layout"
+		xmlns:form="sap.ui.layout.form"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:u="sap.ui.unified"
+		xmlns:ui="sap.ui.table"
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core">
+	<NavContainer id="wizardNavContainer">
+		<pages>
+			<Page
+					id="wizardContentPage"
+					showHeader="false">
+				<content>
+					<Wizard id="ShoppingCartWizard"
+							complete="completedHandler"
+							enableBranching="true"
+							class="sapUiResponsivePadding--header sapUiResponsivePadding--content">
+						
+						<WizardStep
+								id="ContentsStep"
+								nextStep="PaymentTypeStep"
+								title="Overview"
+								icon="sap-icon://overview-chart">
+			<ui:Table
+				id="table"
+				selectionMode="MultiToggle"
+				rowSelectionChange="onNextEvent"
+				rows="{
+				path: 'userModel&gt;/PLITEMS',
+	        	parameters : {
+            	$count : true,
+            	$$updateGroupId : 'peopleGroup'
+			        }}"
+				visibleRowCount="7"
+				enableCellFilter="{ui>/cellFilterOn}"
+				filter="filterPrice"
+				ariaLabelledBy="title">
+				
+				<ui:extension>
+					<OverflowToolbar>
+						<Title id="title" text="PipeLife Item Overview" />
+						<ToolbarSpacer/>
+						<Button 
+							press="onOpenNextDialog" 
+							id="nextB" 
+							width="200px" 
+							type="Emphasized" 
+							icon="sap-icon://open-command-field" text="Next" visible="false"/>
+						<ToggleButton
+							icon="sap-icon://grid"
+							tooltip="Enable / Disable Cell Filter Functionality"
+							pressed="{ui>/cellFilterOn}"/>
+						<Button
+							tooltip="Delete selected records"
+							icon="sap-icon://delete"
+							press="onDeleteRecord" />	
+						<Button
+							tooltip="Refresh"
+							icon="sap-icon://refresh"
+							press="onRefresh" />							
+						<Button
+							icon="sap-icon://decline"
+							tooltip="Clear all filters"
+							press="clearAllFilters"/>
+						<ToolbarSeparator/>
+						<SearchField
+							placeholder="Filter"
+							value="{ui>/globalFilter}"
+							search="filterGlobally"
+							width="15rem"/>
+					</OverflowToolbar>
+				</ui:extension>
+				
+				<ui:columns>
+					<ui:Column
+						width="3rem"
+						filterProperty="ITEM_ID" 
+						filterType="sap.ui.model.type.Integer" >
+						<Label text="ID" />
+						<ui:template>
+							<Text text="{path: 'userModel&gt;ITEM_ID'}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+					<ui:Column
+						width="10rem"
+						filterProperty="NOM_DIAM_DN"
+						filterType="sap.ui.model.type.Integer"
+						>
+						<Label text="Nominal diameter" />
+						<ui:template>
+							<Text text="{path: 'userModel&gt;NOM_DIAM_DN'}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+					<ui:Column 
+						filterProperty="OUT_DIAM_DOUT"
+						filterType="sap.ui.model.type.Integer"					
+						width="9rem">
+						<Label text="Outer diameter" />
+						<ui:template>
+							<Text text="{path: 'userModel&gt;OUT_DIAM_DOUT'}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+					<ui:Column
+						filterProperty="INN_DIAM_DIN"
+						filterType="sap.ui.model.type.Integer"					
+						width="9rem">
+						<Label text="Inner diameter" />
+						<ui:template>
+							<Text text="{path: 'userModel&gt;INN_DIAM_DIN'}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+					<ui:Column
+						filterProperty="R_HEIGTH_H"
+						filterType="sap.ui.model.type.Integer"					
+						width="9rem">
+						<Label text="Rib's height" />
+						<ui:template>
+							<Text text="{path: 'userModel&gt;R_HEIGTH_H'}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+					<ui:Column
+						filterProperty="R_LENGTH_L"
+						filterType="sap.ui.model.type.Integer"					
+						width="9rem">
+						<Label text="Rib's length" />
+						<ui:template>
+							<Text text="{path: 'userModel&gt;R_LENGTH_L'}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+					<ui:Column
+						filterProperty="WEIGHT"
+						filterType="sap.ui.model.type.Integer"					
+						width="7rem">
+						<Label text="Weight" />
+						<ui:template>
+							<Text text="{path: 'userModel&gt;WEIGHT'}" wrapping="false" />
+						</ui:template>
+					</ui:Column>		
+					<ui:Column
+						filterProperty="PIPE_LENGTH"
+						filterType="sap.ui.model.type.Integer"					
+						width="9rem">
+						<Label text="Pipe's Length" />
+						<ui:template>
+							<Text text="{path: 'userModel&gt;PIPE_LENGTH'}" wrapping="false" />
+						</ui:template>
+					</ui:Column>	
+					<ui:Column
+						filterProperty="SOCKET_LENGTH"
+						filterType="sap.ui.model.type.Integer"					
+						width="9rem">
+						<Label text="Socket's length" />
+						<ui:template>
+							<Text text="{path: 'userModel&gt;SOCKET_LENGTH'}" wrapping="false" />
+						</ui:template>
+					</ui:Column>	
+					<ui:Column
+						filterProperty="INN_SOCKET_DIAM"
+						filterType="sap.ui.model.type.Integer"					
+						width="10rem">
+						<Label text="Inner socket diameter" />
+						<ui:template>
+							<Text text="{path: 'userModel&gt;INN_SOCKET_DIAM'}" wrapping="false" />
+						</ui:template>
+					</ui:Column>		
+					<ui:Column
+						filterProperty="PROD_CODE"
+						filterType="sap.ui.model.type.String"					
+						width="10rem">
+						<Label text="Product code" />
+						<ui:template>
+							<Text text="{path: 'userModel&gt;PROD_CODE'}" wrapping="false" />
+						</ui:template>
+					</ui:Column>		
+					<ui:Column
+						id="cat1"
+						filterProperty="CATEGORY"
+						filterType="sap.ui.model.type.String"
+						width="6rem">
+						<Label text="Category" />
+						<ui:template>
+							<Text text="{path: 'userModel&gt;CATEGORY'}" wrapping="false" />
+						</ui:template>
+					</ui:Column>					
+				</ui:columns>
+				<ui:footer>
+					<OverflowToolbar id="infobar"></OverflowToolbar>
+				</ui:footer>
+			</ui:Table>
+			
+			
+		<!--	<Table mode="MultiSelect" id="idProductsTable"-->
+		<!--				items="{-->
+		<!--	path: 'userModel&gt;/PLITEMS'-->
+		<!--}" >-->
+		<!--		<headerToolbar>-->
+		<!--			<OverflowToolbar>-->
+		<!--				<Title text="PipeLife Items" level="H2"/>-->
+		<!--				<ToolbarSpacer/>-->
+		<!--				<Button-->
+		<!--					icon="sap-icon://refresh"-->
+		<!--					press="onRefresh" />						-->
+		<!--				<Button-->
+		<!--					tooltip="Sort"-->
+		<!--					icon="sap-icon://sort"-->
+		<!--					press="handleSortButtonPressed" />-->
+		<!--				<Button-->
+		<!--					tooltip="Filter"-->
+		<!--					icon="sap-icon://filter"-->
+		<!--					press="handleFilterButtonPressed" />-->
+						<!--<Button-->
+						<!--	icon="sap-icon://delete"-->
+						<!--	press="onDeleteRecord" />							-->
+		<!--				<ToggleButton icon="sap-icon://menu" tooltip="Enable Custom Context Menu" press="onToggleContextMenu" />-->
+		<!--			</OverflowToolbar>-->
+		<!--		</headerToolbar>-->
+		<!--		<infoToolbar>-->
+		<!--			<OverflowToolbar id="vsdFilterBar" visible="false">-->
+		<!--				<Text id="vsdFilterLabel" />-->
+		<!--			</OverflowToolbar>-->
+		<!--		</infoToolbar>-->
+		<!--		<columns>-->
+		<!--			<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="ID" /></Column>-->
+		<!--			<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Nominal diameter" /></Column>-->
+		<!--			<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Outer diameter" /></Column>-->
+		<!--			<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Inner diameter" /></Column>-->
+		<!--			<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Rib's height" /></Column>-->
+		<!--			<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Rib's length" /></Column>-->
+		<!--			<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Weight" /></Column>-->
+		<!--			<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Pipe's length" /></Column>-->
+		<!--			<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Socket length" /></Column>-->
+		<!--			<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Inner socket diameter" /></Column>-->
+		<!--			<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Product Code" /></Column>-->
+		<!--			<Column hAlign="Center"><Text text="Category" /></Column>-->
+		<!--		</columns>-->
+		<!--		<items>-->
+		<!--			<ColumnListItem>-->
+		<!--				<cells>-->
+		<!--					<ObjectIdentifier title="{path: 'userModel&gt;ITEM_ID'}"/>-->
+		<!--					<Text text="{path: 'userModel&gt;NOM_DIAM_DN'}" />-->
+		<!--					<Text text="{path: 'userModel&gt;OUT_DIAM_DOUT'}" />-->
+		<!--					<Text text="{path: 'userModel&gt;INN_DIAM_DIN'}" />-->
+		<!--					<Text text="{path: 'userModel&gt;R_HEIGTH_H'}" />-->
+		<!--					<Text text="{path: 'userModel&gt;R_LENGTH_L'}" />-->
+		<!--					<Text text="{path: 'userModel&gt;WEIGHT'}" />-->
+		<!--					<Text text="{path: 'userModel&gt;PIPE_LENGTH'}" />-->
+		<!--					<Text text="{path: 'userModel&gt;SOCKET_LENGTH'}" />-->
+		<!--					<Text text="{path: 'userModel&gt;INN_SOCKET_DIAM'}" />-->
+		<!--					<Text text="{path: 'userModel&gt;PROD_CODE'}" />-->
+		<!--					<Text text="{path: 'userModel&gt;CATEGORY'}" />-->
+		<!--				</cells>-->
+		<!--			</ColumnListItem>-->
+		<!--		</items>-->
+		<!--	</Table>				-->
+						</WizardStep>
+						
+						<WizardStep
+								id="PaymentTypeStep"
+								title="New Item registration"
+								subsequentSteps="CreditCardStep, BankAccountStep"
+								complete="goToPaymentStep"
+								icon="sap-icon://database">
+							<Text class="sapUiSmallMarginBottom"
+									text="Choose whether to create new Item or to choose from already existing Items."/>
+							<HBox
+									alignItems="Center"
+									justifyContent="Center"
+									width="100%">
+								<SegmentedButton selectionChange="setPaymentMethod" id="paymentMethodSelection" selectedKey="{/selectedPayment}">
+									<items>
+										<SegmentedButtonItem width="400px" key="Credit Card" icon="sap-icon://request" text="Register New Item" />
+										<SegmentedButtonItem width="400px" key="Bank Transfer" icon="sap-icon://cursor-arrow" text="Create New Item from Existing" />
+									</items>
+								</SegmentedButton>
+							</HBox>
+						</WizardStep>
+						
+						
+						<WizardStep
+								id="CreditCardStep"
+								title="Basic Information"
+								complete="billingAddressComplete"
+								icon="sap-icon://message-information">
+							<MessageStrip type="Warning" text="Enter at least first 3 attributes." />
+							<form:SimpleForm
+							
+									layout="ResponsiveGridLayout"
+									editable="true"
+									labelSpanXL="4"
+									labelSpanL="4"
+									labelSpanM="4"
+									labelSpanS="12"
+									adjustLabelSpan="false"
+									emptySpanXL="4"
+									emptySpanL="4"
+									emptySpanM="4"
+									emptySpanS="0"
+									columnsXL="1"
+									columnsL="1"
+									columnsM="1">
+								<Label text="Nominal diameter" required="true" />
+								<Input liveChange="onStates" id="nomIn" valueState="Error" valueStateText="Input Nominal diameter"  value="{/nomDiam}" />
+								<Label text="Outer diameter" required="true"/>
+								<Input liveChange="onStates" id="outIn" valueState="Error" valueStateText="Input Outer diameter"  value="{/outerDiam}" />
+								<Label text="Inner diameter" required="true"/>
+								<Input liveChange="onStates" id="innIn" valueState="Error" valueStateText="Input Inner diameter" value="{/innerDiam}" />
+								<Label text="Rib's height" />
+								<Input liveChange="onStates" id="ribH" valueState="Error" valueStateText="Input Rib's height"  value="{/ribHeight}" />
+								<Label text="Rib's length" />
+								<Input liveChange="onStates" id="ribL" valueState="Error" valueStateText="Input Rib's length"  value="{/ribLength}" />
+								<Label text="Weight" />
+								<Input liveChange="onStates" id="theWeight" valueState="Error" valueStateText="Input Weight" value="{/theWeight}" />
+								<Label text="Pipe's length" />
+								<Input liveChange="onStates" id="pipeL" valueState="Error" valueStateText="Input Pipe's length"  value="{/pipeLength}" />
+								<Label text="Socket length" />
+								<Input liveChange="onStates" id="socketL" valueState="Error" valueStateText="Input Socket length"  value="{/socketLength}" />								
+								<Label text="Inner Socket Diameter" />
+								<Input liveChange="onStates" id="innsocketD" valueState="Error" valueStateText="Input Inner socket Diameter" value="{/innSocketL}" />
+								<Label text="Product code" />
+								<Input liveChange="onStates" id="prodC" valueState="Error" valueStateText="Input Product code"  value="{/prodCode}" />								
+								<Label text="Category" />
+								<Input liveChange="onStates" placeholder="Press Choose Category button below..." id="catInput" visible="true" valueStateText="Input Socket length" value="{/categoryInput}">	
+								<layoutData>
+									<layout:GridData span="XL3 L3 M3 S3" />
+								</layoutData>
+								</Input>
+								<Button icon="sap-icon://expand-group" id="catButton" press=".onSelectDialogPress" text="Category"/>
+								<Label text="Description"/>
+								<TextArea id="textins" placeholder="Add Description..."  rows="6"></TextArea>
+								<Label text="Images" />
+								<HBox>
+									<Image  press="handleImage3Press" src="https://i.ibb.co/W59bKQN/pipe1.png" decorative="true"/>
+									<CheckBox selected="true" />
+									<Image  press="handleImage3Press" src="https://i.ibb.co/KLV4hgS/pipe2.png" />
+									<CheckBox />
+								</HBox>
+								<Label text=""></Label>
+								<Button icon="sap-icon://save" press="onCreateRecord" type="Emphasized" text="Save"/>
+								
+							</form:SimpleForm>
+								
+										<!--<Bar>-->
+										<!--	<contentMiddle>-->
+										<!--		<Button icon="sap-icon://save" width="380px" press="onCreateRecord" type="Emphasized" text="Save"/>-->
+										<!--	</contentMiddle>-->
+										<!--</Bar>-->
+							
+						</WizardStep>
+						
+						
+						<WizardStep
+								id="BankAccountStep"
+								title="Create New Item from Existing"
+								nextStep="BillingStep"
+								icon="sap-icon://official-service">
+
+			<Table id="idProductsTableTwo"
+						items="{
+			path: 'userModel&gt;/PLITEMS'
+		}">
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title text="PipeLife Items" level="H2"/>
+						<ToolbarSpacer/>
+						<Button
+							tooltip="Sort"
+							icon="sap-icon://sort"
+							press="handleSortButtonPressed" />
+						<Button
+							tooltip="Filter"
+							icon="sap-icon://filter"
+							press="handleFilterButtonPressed" />
+						<ToggleButton icon="sap-icon://menu" tooltip="Enable Custom Context Menu" press="onToggleContextMenu" />
+					</OverflowToolbar>
+				</headerToolbar>
+				<infoToolbar>
+					<OverflowToolbar id="vsdFilterBarr" visible="false">
+						<Text id="vsdFilterLabell" />
+					</OverflowToolbar>
+				</infoToolbar>
+				<columns>
+					<Column></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true"><Text text="ID" /></Column>
+					<Column minScreenWidth="Tablet" hAlign="Center" demandPopin="true"><Text text="Nominal diameter" /></Column>
+					<Column minScreenWidth="Tablet" hAlign="Center" demandPopin="true" ><Text text="Outer diameter" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Inner diameter" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Rib's height" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Rib's length" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Weight" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Pipe's length" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Socket length" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Inner socket diameter" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Product Code" /></Column>
+					<Column hAlign="End"><Text text="Category" /></Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Button press="onCopy" icon="sap-icon://copy"></Button>
+							<ObjectIdentifier title="{path: 'userModel&gt;ITEM_ID'}"/>
+							<Text text="{path: 'userModel&gt;NOM_DIAM_DN'}" />
+							<Text text="{path: 'userModel&gt;OUT_DIAM_DOUT'}" />
+							<Text text="{path: 'userModel&gt;INN_DIAM_DIN'}" />
+							<Text text="{path: 'userModel&gt;R_HEIGTH_H'}" />
+							<Text text="{path: 'userModel&gt;R_LENGTH_L'}" />
+							<Text text="{path: 'userModel&gt;WEIGHT'}" />
+							<Text text="{path: 'userModel&gt;PIPE_LENGTH'}" />
+							<Text text="{path: 'userModel&gt;SOCKET_LENGTH'}" />
+							<Text text="{path: 'userModel&gt;INN_SOCKET_DIAM'}" />
+							<Text text="{path: 'userModel&gt;PROD_CODE'}" />
+							<Text text="{path: 'userModel&gt;CATEGORY'}" />							
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>						
+						</WizardStep>
+						
+						
+						<WizardStep
+								id="BillingStep"
+								title="Chosen Existing Item"
+								complete="billingAddressComplete"
+								icon="sap-icon://lightbulb">
+							<MessageStrip type="Warning" id="chosenItem"  />
+							<form:SimpleForm
+									editable="true">
+								<Label text="Nominal diameter"  />
+								<Input value="{/nomDiam1}" liveChange="onStates" id="nomd" width="380px" />
+								<Label text="Outer diameter" />
+								<Input value="{/outerDiam1}" liveChange="onStates" id="outerd" width="380px" />
+								<Label text="Inner diameter" />
+								<Input value="{/innerDiam1}" liveChange="onStates" id="innerd" width="380px"  />
+								<Label text="Rib's height" />
+								<Input value="{/ribHeight1}" liveChange="onStates" id="ribh" width="380px"  />
+								<Label text="Rib's length" />
+								<Input value="{/ribLength1}" liveChange="onStates" id="ribl" width="380px"  />
+								<Label text="Weight" />
+								<Input value="{/theWeight1}" liveChange="onStates" id="theweight" width="380px"  />
+								<Label text="Pipe's length" />
+								<Input value="{/pipeLength1}" liveChange="onStates" id="pipel" width="380px"  />
+								<Label text="Socket length" />
+								<Input value="{/socketLength1}" liveChange="onStates" id="socketl" width="380px"  />
+								<Label text="Inner Socket Diameter" />
+								<Input value="{/innSocketL1}" liveChange="onStates" id="innsocketDd"  width="380px" />								
+								<Label text="Product code" />
+								<Input value="{/prodCode1}" liveChange="onStates" id="prodcode" width="380px" />									
+								<Label text="Category" />
+								<Input value="{/categoryInput1}" liveChange="onStates" id="category" width="380px"  />								
+								<Label text="Description"/>
+								<TextArea id="textins2" width="380px" rows="6"></TextArea>
+								<Label text="Images" />
+								<HBox>
+									<Image press="handleImage3Press" src="https://i.ibb.co/W59bKQN/pipe1.png" decorative="true"/>
+									<CheckBox selected="true" />
+									<Image press="handleImage3Press" src="https://i.ibb.co/FB93rPq/pipe2.png" />
+									<CheckBox/>
+								</HBox>		
+							
+								<Label text=""></Label>
+								<Button icon="sap-icon://save" width="380px" press="onCreateRecord1" type="Emphasized" text="Save"/>	
+								
+							</form:SimpleForm>
+						</WizardStep>
+						
+					</Wizard>
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button text="Cancel" press="handleWizardCancel"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</NavContainer>
+</mvc:View>

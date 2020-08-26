@@ -1,0 +1,14 @@
+{
+  "ServiceName_1": {
+  "object_owner": {
+	   "roles" : [
+	        "DNS_PIPELIFE_ADMIN"
+		]
+	},
+	"application_user": {
+	    "roles" : [
+	        "DNS_PIPELIFE_ADMIN"
+		]
+	}
+  }
+}

@@ -1,0 +1,29 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		confirm="handleFilterDialogConfirm">
+		<filterItems>
+			<ViewSettingsFilterItem
+				text="Outer diameter"
+				key="OUT_DIAM_DOUT"
+				multiSelect="false">
+				<items>
+					<ViewSettingsItem text="Less than 170" key="OUT_DIAM_DOUT___LE___170___X" />
+					<ViewSettingsItem text="Between 170 and 200" key="OUT_DIAM_DOUT___BT___170___200" />
+					<ViewSettingsItem text="More Than 200" key="OUT_DIAM_DOUT___GT___200___X" />
+				</items>
+			</ViewSettingsFilterItem>
+			<ViewSettingsFilterItem
+				text="Socket Length"
+				key="SOCKET_LENGTH"
+				multiSelect="false">
+				<items>
+					<ViewSettingsItem text="Less Than 80" key="SOCKET_LENGTH___LE___80___X" />
+					<ViewSettingsItem text="Between 70 and 90" key="SOCKET_LENGTH___BT___70___90" />
+					<ViewSettingsItem text="More Than 90" key="SOCKET_LENGTH___GT___90___X" />
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>
